@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+service InnoService {
+    rpc ReverseText(TextReq) returns (TextRep) {}
+    rpc SplitText(SplitTextReq) returns (SplitTextRep) {}
+    rpc IsPrime(stream NumberReq) returns (stream TextRep) {}
+}
+
+message TextReq {
+    string text = 1;
+}
+
+message TextRep {
+    string text = 1;
+}
+
+message SplitTextReq {
+    string text = 1;
+    string delim = 2;
+}
+
+message SplitTextRep {
+    int32 count = 1;
+    repeated string parts = 2;
+}
+
+message NumberReq {
+    int32 number = 1;
+}
